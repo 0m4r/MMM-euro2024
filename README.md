@@ -25,3 +25,9 @@ __BE AWARE OF THE REQUEST LIMIT FOR THE FREE TIER OF THE API__
 
 ## SCREENSHOT
 ![MMM-euro2021](MMM-euro2021_screenshot.png)
+
+### views and clone stats
+![views](https://raw.githubusercontent.com/0m4r/traffic-badges/traffic/traffic-MMM-euro2021/views.svg)
+![views per week](https://raw.githubusercontent.com/0m4r/traffic-badges/traffic/traffic-MMM-euro2021/views_per_week.svg)
+![clones](https://raw.githubusercontent.com/0m4r/traffic-badges/traffic/traffic-MMM-euro2021/clones.svg)
+![clones per week](https://raw.githubusercontent.com/0m4r/traffic-badges/traffic/traffic-MMM-euro2021/clones_per_week.svg)
