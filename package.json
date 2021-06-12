@@ -1,0 +1,19 @@
+{
+  "name": "mmm-euro2021",
+  "version": "0.0.1",
+  "description": "a Magic Mirror Module to display Euro 2020 fixtures and standings",
+  "main": "MMM-euro2021.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0m4r/MMM-euro2021.git"
+  },
+  "author": "Omar Adobati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0m4r/MMM-euro2021/issues"
+  },
+  "homepage": "https://github.com/0m4r/MMM-euro2021#readme"
+}

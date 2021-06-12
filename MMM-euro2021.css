@@ -1,0 +1,104 @@
+.MMM-euro2021-table td,
+.MMM-euro2021-table th {
+  padding: 0 0.2rem;
+}
+
+.MMM-euro2021-FINISHED {
+  opacity: 0.3;
+}
+
+.MMM-euro2021-FINISHED .MMM-euro2021-score {
+  font-weight: bolder;
+}
+
+.MMM-euro2021-PAUSED,
+.MMM-euro2021-IN_PLAY {
+  opacity: 1;
+}
+
+.MMM-euro2021-PAUSED .MMM-euro2021-score,
+.MMM-euro2021-IN_PLAY .MMM-euro2021-score{
+  animation: pulsate 4s ease-in-out infinite;
+  color: red;
+}
+
+.MMM-euro2021-SCHEDULED {
+  opacity: 0.3;
+}
+
+.MMM-euro2021-awayTeam {
+  text-align: left;
+}
+
+.MMM-euro2021-homeTeam {
+  text-align: right;
+}
+
+
+.MMM-euro2021-header {
+  font-size: 12px;
+  margin: 0;
+  text-align: left;
+  line-height: 1.5em;
+}
+
+.MMM-euro2021-footer {
+  font-size: 12px;
+  margin: 0;
+  text-align: left;
+  line-height: 1.5em;
+}
+
+.MMM-euro2021-footer-right,
+.MMM-euro2021-footer-left {
+  margin: 0;
+  width: 50%;
+  max-width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.MMM-euro2021-footer-right {
+  text-align: right;
+  float: right;
+}
+
+.MMM-euro2021-footer-left {
+  text-align: left;
+  float: left;
+}
+
+.MMM-euro2021-footer-version,
+.MMM-euro2021-footer-dates {
+  display: inline-block;
+  max-width: 100%;
+}
+.MMM-euro2021-footer-version {
+  margin-left: 0.5rem;
+}
+
+.MMM-euro2021-footer-dates {
+  margin-right: 0.5rem;
+}
+
+.MMM-euro2021-footer-version-update {
+  color: gold;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
