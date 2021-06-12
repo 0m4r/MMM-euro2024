@@ -159,6 +159,7 @@ module.exports = NodeHelper.create({
   },
 
   fetchAll: async function () {
+    try {
       if(this.teams === null) {
         this.teams = await this.fetchTeams();
       }
@@ -179,6 +180,10 @@ module.exports = NodeHelper.create({
         }
       })
       this.sendSocketNotification(this.name + 'FIXTURES', matches);
+    } catch (e) {
+      Log.error(e)
+      this.sendSocketNotification(this.name + 'FIXTURES', []);
+    }
   },
 
   socketNotificationReceived: function (notification, payload) {

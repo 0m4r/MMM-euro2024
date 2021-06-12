@@ -20,3 +20,8 @@ the default configuration looks like this:
     updateInterval: 60 * 1000, // one minute
   },
 }
+```
+__BE AWARE OF THE REQUEST LIMIT FOR THE FREE TIER OF THE API__
+
+## SCREENSHOT
+![MMM-euro2021](MMM-euro2021_screenshot.png)
