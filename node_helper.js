@@ -179,8 +179,8 @@ module.exports = NodeHelper.create({
         }
       })
 
-      const statuses = matches.map(m => m.status);
-      const hasActiveGames = statuses.includes(['PAUSED', 'IN_PLAY'])
+      let statuses = matches.map(m => m.status);
+      const hasActiveGames = statuses.includes('PAUSED') || statuses.includes('IN_PLAY')
       if(!hasActiveGames) {
         const dates = matches.map(m => m.utcDate);
         const nextDates = this.findNextGameDate(dates, true)
