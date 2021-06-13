@@ -3,8 +3,12 @@
   padding: 0 0.2rem;
 }
 
+.MMM-euro2021-table th {
+  text-align: center;
+}
+
 .MMM-euro2021-FINISHED {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .MMM-euro2021-FINISHED .MMM-euro2021-score {
@@ -38,15 +42,17 @@
 .MMM-euro2021-header {
   font-size: 12px;
   margin: 0;
-  text-align: left;
-  line-height: 1.5em;
+  text-align: right;
+  line-height: 1.5ch;
 }
 
 .MMM-euro2021-footer {
   font-size: 12px;
   margin: 0;
   text-align: left;
-  line-height: 1.5em;
+  line-height: 1.5ch;
+  padding: 0.5ch 0;
+  border-top: 1px solid var(--color-text);
 }
 
 .MMM-euro2021-footer-right,

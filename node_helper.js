@@ -15,11 +15,10 @@ const { secret } = require('./.secret.js');
 module.exports = NodeHelper.create({
   interval: null,
   defaults: {
-    competitionId: 2018,
+    competitionId: 2018, // Euro 2020
     updateInterval:  60 * 1000, // 1 minute
   },
   baseURL: 'https://api.football-data.org/v2/',
-  scheduler: null,
   config: {},
   teams: null,
   secret: secret,
@@ -30,9 +29,6 @@ module.exports = NodeHelper.create({
 
   stop: function () {
     Log.log('Stopping node helper for: ' + this.name);
-    if (this.scheduler !== null) {
-      this.scheduler.cancel()
-    }
   },
 
   fetchMatchDay: function (competitionId = this.config.competitionId) {
@@ -143,22 +139,25 @@ module.exports = NodeHelper.create({
     );
   },
 
-  fetchAllWithInterval: function () {
+  fetchAllWithInterval: function (interval = this.config.updateInterval, immediate = true) {
+    Log.info(this.name, 'fetchAllWithInterval', interval)
     try {
       clearInterval(this.interval);
       const fetch = () => {
         this.fetchAll();
-        this.sendSocketNotification(this.name + 'NEXT_UPDATE', [new Date(), new Date(Date.now() + this.config.updateInterval)]);
-        Log.info(this.name, 'fetchAllWithInterval| next execution scheduled for', new Date(Date.now() + this.config.updateInterval));
+        this.sendSocketNotification(this.name + 'NEXT_UPDATE', [new Date(), new Date(Date.now() + interval)]);
+        Log.info(this.name, 'fetchAllWithInterval| next execution scheduled for', new Date(Date.now() + interval));
       }
-      this.interval = setInterval(fetch, this.config.updateInterval);
-      fetch();
+      this.sendSocketNotification(this.name + 'NEXT_UPDATE', [new Date(), new Date(Date.now() + interval)]);
+      this.interval = setInterval(fetch, interval);
+      immediate && fetch();
     }catch(e){
       Log.error(this.name, 'fetchAllWithInterval', e)
     }
   },
 
   fetchAll: async function () {
+    const self = this;
     try {
       if(this.teams === null) {
         this.teams = await this.fetchTeams();
@@ -179,11 +178,40 @@ module.exports = NodeHelper.create({
           m.awayTeam.flag = awayTeam.crestUrl
         }
       })
+
+      const statuses = matches.map(m => m.status);
+      const hasActiveGames = statuses.includes(['PAUSED', 'IN_PLAY'])
+      if(!hasActiveGames) {
+        const dates = matches.map(m => m.utcDate);
+        const nextDates = this.findNextGameDate(dates, true)
+        if(nextDates && nextDates.length > 0) {
+          const next = nextDates[0];
+          const timeUntilNextGame = new Date(next) - new Date();
+          Log.info(this.name, 'fetchAll | timeUntilNextGame', timeUntilNextGame);
+          self.fetchAllWithInterval(timeUntilNextGame, false);
+        }
+      }
       this.sendSocketNotification(this.name + 'FIXTURES', matches);
     } catch (e) {
-      Log.error(e)
+      Log.error(this.name, 'fetchAll', e)
       this.sendSocketNotification(this.name + 'FIXTURES', []);
     }
+  },
+
+  findNextGameDate: function (datesArray, after = true) {
+    var arr = [...datesArray];
+    var now = new Date();
+
+    arr.sort(function(a, b) {
+      var distanceA = Math.abs(now - new Date(a));
+      var distanceB = Math.abs(now - new Date(b));
+      return distanceA - distanceB; // sort a before b when the distance is smaller
+    });
+
+    const prev = arr.filter((d) => new Date(d) - now < 0);
+    const next = arr.filter((d) => new Date(d) - now > 0);
+
+    return after ? next : prev;
   },
 
   socketNotificationReceived: function (notification, payload) {
