@@ -38,20 +38,38 @@
   text-align: right;
 }
 
+.MMM-euro2021-date,
+.MMM-euro2021-time-group {
+  font-size: smaller;
+  background-color: #6666663a;
+}
+
+.MMM-euro2021-date{
+  text-align: center;
+}
+
+.MMM-euro2021-time {
+  text-align: right;
+}
+
+.MMM-euro2021-group {
+  text-align: left;
+}
 
 .MMM-euro2021-header {
   font-size: 12px;
   margin: 0;
   text-align: right;
-  line-height: 1.5ch;
+  line-height: 1.5rem;
+  /* padding: 0.5ch 0; */
+  /* border-bottom: 1px solid var(--color-text); */
 }
 
 .MMM-euro2021-footer {
   font-size: 12px;
   margin: 0;
   text-align: left;
-  line-height: 1.5ch;
-  padding: 0.5ch 0;
+  /* padding: 0.5ch 0; */
   border-top: 1px solid var(--color-text);
 }
 

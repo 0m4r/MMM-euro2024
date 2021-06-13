@@ -191,7 +191,9 @@ module.exports = NodeHelper.create({
           self.fetchAllWithInterval(timeUntilNextGame, false);
         }
       }
-      this.sendSocketNotification(this.name + 'FIXTURES', matches);
+      const matchesGroupedByDate = this.groupByDate(matches)
+      this.sendSocketNotification(this.name + 'FIXTURES', matchesGroupedByDate);
+      // this.sendSocketNotification(this.name + 'FIXTURES', matches);
     } catch (e) {
       Log.error(this.name, 'fetchAll', e)
       this.sendSocketNotification(this.name + 'FIXTURES', []);
@@ -212,6 +214,28 @@ module.exports = NodeHelper.create({
     const next = arr.filter((d) => new Date(d) - now > 0);
 
     return after ? next : prev;
+  },
+
+  groupByDate: function (data) {
+    // this gives an object with dates as keys
+    const groups = data.reduce((groups, game) => {
+      const date = game.utcDate.split('T')[0];
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(game);
+      return groups;
+    }, {});
+
+    // Edit: to add it in the array format instead
+    const groupArrays = Object.keys(groups).map((date) => {
+      return {
+        date,
+        games: groups[date]
+      };
+    });
+
+    return groupArrays
   },
 
   socketNotificationReceived: function (notification, payload) {

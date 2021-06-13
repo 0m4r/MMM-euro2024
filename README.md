@@ -3,7 +3,7 @@ a Magic Mirror Module to display Euro 2020 fixtures and standings
 
 ## PREREQUISITES
 create an account https://www.football-data.org/ and obtain your token.  
-Create a file named .secret.js (see .secret.js.EXAMPLE) and add your token in there.  
+Create a file named .secret.js (see [secret.js.EXAMPLE](https://github.com/0m4r/MMM-euro2021/blob/main/secret.js.EXAMPLE)) and add your token in there.  
 
 ## INSTALLATION
 This 3rd party module install just like any other.  

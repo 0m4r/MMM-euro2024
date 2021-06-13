@@ -43,10 +43,11 @@ Module.register('MMM-euro2021', {
     p_header.appendChild(p_header_text);
     wrapper.appendChild(p_header);
 
-    const buildTD = (value = '', classes = null) => {
+    const buildTD = (value = '', classes = null, colspan = 1) => {
       const td = document.createElement('td');
       td.classList.add(classes)
       td.innerHTML = value;
+      td.setAttribute('colspan', colspan);
       return td;
     }
 
@@ -70,31 +71,43 @@ Module.register('MMM-euro2021', {
     table.classList.add('xsmall', 'MMM-euro2021-table');
     wrapper.appendChild(table);
 
-    const tr = document.createElement('tr');
-      table.appendChild(tr);
-      tr.appendChild(buildTH('date'));
-      tr.appendChild(buildTH('group'));
-      tr.appendChild(buildTH(''));
-      tr.appendChild(buildTH(''));
-      tr.appendChild(buildTH(''));
-      tr.appendChild(buildTH(''));
-      tr.appendChild(buildTH(''));
+    // const tr = document.createElement('tr');
+    //   table.appendChild(tr);
+    //   tr.appendChild(buildTH('date'));
+    //   tr.appendChild(buildTH('group'));
+    //   tr.appendChild(buildTH(''));
+    //   tr.appendChild(buildTH(''));
+    //   tr.appendChild(buildTH(''));
+    //   tr.appendChild(buildTH(''));
+    //   tr.appendChild(buildTH(''));
 
-    this.fixtures.forEach(m => {
+    this.fixtures.forEach(f => {
+      console.log(f)
       const tr = document.createElement('tr');
-      table.appendChild(tr);
-      tr.appendChild(buildTD(new Date(m.utcDate).toLocaleString()));
-      tr.appendChild(buildTD(m.group));
-      tr.appendChild(buildTD(m.homeTeam.name, 'MMM-euro2021-homeTeam'));
-      tr.appendChild(buildTDForFlag(m.homeTeam.flag, 'MMM-euro2021-flag'));
-      tr.appendChild(buildTD(m.score.fullTime.homeTeam, 'MMM-euro2021-score'));
-      tr.appendChild(buildTD('-'));
-      tr.appendChild(buildTD(m.score.fullTime.awayTeam, 'MMM-euro2021-score'));
-      tr.appendChild(buildTDForFlag(m.awayTeam.flag, 'MMM-euro2021-flag'));
-      tr.appendChild(buildTD(m.awayTeam.name, 'MMM-euro2021-awayTeam'));
+      tr.appendChild(buildTD(new Date(f.date).toLocaleDateString(), 'MMM-euro2021-date', 9));
+      table.appendChild(tr)
 
-      tr.classList.add(this.name + '-' + m.status)
-    })
+      f.games.forEach(m => {
+        const tr1 = document.createElement('tr');
+        tr1.appendChild(buildTD(new Date(m.utcDate).toLocaleTimeString(), 'MMM-euro2021-time', 3));
+        tr1.appendChild(buildTD('', null, 1));
+        tr1.appendChild(buildTD(m.group, 'MMM-euro2021-group', 3));
+        tr1.classList.add('MMM-euro2021-' + m.status, 'MMM-euro2021-time-group')
+        table.appendChild(tr1)
+
+        const tr = document.createElement('tr');
+        tr.appendChild(buildTD(m.homeTeam.name, 'MMM-euro2021-homeTeam'));
+        tr.appendChild(buildTDForFlag(m.homeTeam.flag, 'MMM-euro2021-flag'));
+        tr.appendChild(buildTD(m.score.fullTime.homeTeam, 'MMM-euro2021-score'));
+        tr.appendChild(buildTD('-'));
+        tr.appendChild(buildTD(m.score.fullTime.awayTeam, 'MMM-euro2021-score'));
+        tr.appendChild(buildTDForFlag(m.awayTeam.flag, 'MMM-euro2021-flag'));
+        tr.appendChild(buildTD(m.awayTeam.name, 'MMM-euro2021-awayTeam'));
+        table.appendChild(tr)
+
+        tr.classList.add('MMM-euro2021-' + m.status)
+      });
+    });
 
     // FOOTER --
     const p_footer = document.createElement('p');
@@ -130,14 +143,14 @@ Module.register('MMM-euro2021', {
           'MMM-euro2021-footer-version'
         )
       );
-      p_footer_right.appendChild(spanForFooter(' '));
-      p_footer_right.appendChild(
-        spanForFooter(
-          'latest version:' + this.version.remote,
-          'MMM-euro2021-footer-version'
-        )
-      );
       if (this.version.local !== this.version.remote) {
+        p_footer_right.appendChild(spanForFooter(' '));
+        p_footer_right.appendChild(
+          spanForFooter(
+            'latest version:' + this.version.remote,
+            'MMM-euro2021-footer-version'
+          )
+        );
         p_footer_right.classList.add('MMM-euro2021-footer-version-update');
       }
     }
