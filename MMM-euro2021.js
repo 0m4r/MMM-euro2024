@@ -73,7 +73,7 @@ Module.register('MMM-euro2021', {
 
     this.fixtures.forEach(f => {
       const tr = document.createElement('tr');
-      tr.appendChild(buildTD(new Date(f.date).toLocaleDateString(), 'MMM-euro2021-date', 9));
+      tr.appendChild(buildTD(new Date(f.date).toLocaleDateString(), 'MMM-euro2021-date', 7));
       table.appendChild(tr)
 
       f.games.forEach(m => {
