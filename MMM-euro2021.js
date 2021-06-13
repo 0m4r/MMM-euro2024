@@ -71,18 +71,7 @@ Module.register('MMM-euro2021', {
     table.classList.add('xsmall', 'MMM-euro2021-table');
     wrapper.appendChild(table);
 
-    // const tr = document.createElement('tr');
-    //   table.appendChild(tr);
-    //   tr.appendChild(buildTH('date'));
-    //   tr.appendChild(buildTH('group'));
-    //   tr.appendChild(buildTH(''));
-    //   tr.appendChild(buildTH(''));
-    //   tr.appendChild(buildTH(''));
-    //   tr.appendChild(buildTH(''));
-    //   tr.appendChild(buildTH(''));
-
     this.fixtures.forEach(f => {
-      console.log(f)
       const tr = document.createElement('tr');
       tr.appendChild(buildTD(new Date(f.date).toLocaleDateString(), 'MMM-euro2021-date', 9));
       table.appendChild(tr)
