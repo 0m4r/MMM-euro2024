@@ -51,7 +51,6 @@ module.exports = NodeHelper.create({
               const parsedBody = JSON.parse(body)
               currentMatchday = parsedBody.seasons.find(s => s.id === 507).currentMatchday
               resolve(currentMatchday);
-              // this.sendSocketNotification(this.name + 'MATCH_DAY', currentMatchday);
             } else {
               Log.error(this.name, 'fetchMatchDay', competitionId, error);
               reject(error)
@@ -187,13 +186,16 @@ module.exports = NodeHelper.create({
         if(nextDates && nextDates.length > 0) {
           const next = nextDates[0];
           const timeUntilNextGame = new Date(next) - new Date();
-          Log.info(this.name, 'fetchAll | timeUntilNextGame', timeUntilNextGame);
-          self.fetchAllWithInterval(timeUntilNextGame, false);
+          const timeUntilNextGameMinusFiveMinutes = timeUntilNextGame - 5 * 60 * 1000
+          if(timeUntilNextGameMinusFiveMinutes > 0) {
+            Log.info(this.name, 'fetchAll | timeUntilNextGame', timeUntilNextGameMinusFiveMinutes);
+            self.fetchAllWithInterval(timeUntilNextGameMinusFiveMinutes, false);
+          }
         }
       }
+
       const matchesGroupedByDate = this.groupByDate(matches)
       this.sendSocketNotification(this.name + 'FIXTURES', matchesGroupedByDate);
-      // this.sendSocketNotification(this.name + 'FIXTURES', matches);
     } catch (e) {
       Log.error(this.name, 'fetchAll', e)
       this.sendSocketNotification(this.name + 'FIXTURES', []);
