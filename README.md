@@ -1,4 +1,4 @@
-# MMM-euro2021
+# MMM-euro2024
 
 a Magic Mirror Module to display Euro 2020 fixtures and standings
 
@@ -19,7 +19,7 @@ the default configuration looks like this:
 ```js
 {
   disabled: false,
-  module: "MMM-euro2021",
+  module: "MMM-euro2024",
   position: "bottom_center",
   defaults: {
     updateInterval: 60 * 1000, // one minute

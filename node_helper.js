@@ -1,5 +1,5 @@
 /* Magic Mirror
- * Module: MMM-euro2021
+ * Module: MMM-euro2024
  *
  * By 0m4r
  *

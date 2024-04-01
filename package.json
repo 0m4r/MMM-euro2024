@@ -2,7 +2,7 @@
   "name": "mmm-euro2024",
   "version": "1.0.0",
   "description": "a Magic Mirror Module to display Euro 2020 fixtures and standings",
-  "main": "MMM-euro2021.js",
+  "main": "MMM-euro2024.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
