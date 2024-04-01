@@ -32,4 +32,4 @@ the default configuration looks like this:
 
 ## SCREENSHOT
 
-![MMM-euro2024](MMM-euro2024_screenshot.png)
+![MMM-euro2024](MMM-euro2024.png)
