@@ -1,80 +1,68 @@
-.MMM-euro2021-table td,
-.MMM-euro2021-table th {
+.MMM-euro2024-table td,
+.MMM-euro2024-table th {
   padding: 0 0.2rem;
 }
 
-.MMM-euro2021-table th {
+.MMM-euro2024-table th {
   text-align: center;
 }
 
-.MMM-euro2021-FINISHED {
+.MMM-euro2024-FINISHED {
   opacity: 0.5;
 }
 
-.MMM-euro2021-FINISHED .MMM-euro2021-score {
+.MMM-euro2024-FINISHED .MMM-euro2024-score {
   font-weight: bolder;
 }
 
-.MMM-euro2021-PAUSED,
-.MMM-euro2021-IN_PLAY {
+.MMM-euro2024-PAUSED,
+.MMM-euro2024-IN_PLAY {
   opacity: 1;
 }
 
-.MMM-euro2021-PAUSED .MMM-euro2021-score,
-.MMM-euro2021-IN_PLAY .MMM-euro2021-score{
+.MMM-euro2024-PAUSED .MMM-euro2024-score,
+.MMM-euro2024-IN_PLAY .MMM-euro2024-score{
   animation: pulsate 4s ease-in-out infinite;
   color: red;
 }
 
-.MMM-euro2021-SCHEDULED {
+.MMM-euro2024-SCHEDULED,
+.MMM-euro2024-TIMED {
   opacity: 0.3;
 }
 
-.MMM-euro2021-awayTeam {
+.MMM-euro2024-awayTeam {
   text-align: left;
 }
 
-.MMM-euro2021-homeTeam {
+.MMM-euro2024-homeTeam {
   text-align: right;
 }
 
-.MMM-euro2021-date,
-.MMM-euro2021-time-group {
+.MMM-euro2024-date,
+.MMM-euro2024-time-group {
   font-size: smaller;
   background-color: #6666663a;
-}
-
-.MMM-euro2021-date{
   text-align: center;
+  font-size: smaller;
 }
 
-.MMM-euro2021-time {
-  text-align: right;
-}
-
-.MMM-euro2021-group {
-  text-align: left;
-}
-
-.MMM-euro2021-header {
+.MMM-euro2024-header {
   font-size: 12px;
   margin: 0;
   text-align: right;
   line-height: 1.5rem;
-  /* padding: 0.5ch 0; */
-  /* border-bottom: 1px solid var(--color-text); */
 }
 
-.MMM-euro2021-footer {
+.MMM-euro2024-footer {
   font-size: 12px;
   margin: 0;
   text-align: left;
-  /* padding: 0.5ch 0; */
   border-top: 1px solid var(--color-text);
 }
 
-.MMM-euro2021-footer-right,
-.MMM-euro2021-footer-left {
+.MMM-euro2024-footer-right,
+.MMM-euro2024-footer-left {
   margin: 0;
   width: 50%;
   max-width: 50%;
@@ -82,30 +70,30 @@
   vertical-align: top;
 }
 
-.MMM-euro2021-footer-right {
+.MMM-euro2024-footer-right {
   text-align: right;
   float: right;
 }
 
-.MMM-euro2021-footer-left {
+.MMM-euro2024-footer-left {
   text-align: left;
   float: left;
 }
 
-.MMM-euro2021-footer-version,
-.MMM-euro2021-footer-dates {
+.MMM-euro2024-footer-version,
+.MMM-euro2024-footer-dates {
   display: inline-block;
   max-width: 100%;
 }
-.MMM-euro2021-footer-version {
+.MMM-euro2024-footer-version {
   margin-left: 0.5rem;
 }
 
-.MMM-euro2021-footer-dates {
+.MMM-euro2024-footer-dates {
   margin-right: 0.5rem;
 }
 
-.MMM-euro2021-footer-version-update {
+.MMM-euro2024-footer-version-update {
   color: gold;
 }
 
