@@ -57,27 +57,23 @@
 .MMM-euro2024-footer {
   font-size: 12px;
   margin: 0;
-  text-align: left;
   border-top: 1px solid var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .MMM-euro2024-footer-right,
 .MMM-euro2024-footer-left {
-  margin: 0;
-  width: 50%;
-  max-width: 50%;
-  display: inline-block;
-  vertical-align: top;
+  flex: 0 1 100%;
 }
 
 .MMM-euro2024-footer-right {
   text-align: right;
-  float: right;
 }
 
 .MMM-euro2024-footer-left {
   text-align: left;
-  float: left;
 }
 
 .MMM-euro2024-footer-version,

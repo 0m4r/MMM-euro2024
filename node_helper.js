@@ -155,7 +155,6 @@ module.exports = NodeHelper.create({
 
       let statuses = matches.map(m => m.status);
       const hasActiveGames = statuses.includes('PAUSED') || statuses.includes('IN_PLAY')
-      const hasTimedGames = statuses.every(s => s === "TIMED")
       if (!hasActiveGames) {
         const dates = matches.map(m => m.utcDate);
         const nextDates = this.findNextGameDate(dates, true)
@@ -226,15 +225,21 @@ module.exports = NodeHelper.create({
 
       Log.info(this.name, "socketNotificationReceived | config", JSON.stringify(this.config));
 
-      this.fetchOptions = {
-        method: 'GET',
-        headers: {
-          'X-Auth-Token': this.config.token
-        }
-      }
+      if (!this.config.competitionId || !this.config.token) {
+        Log.error(this.name, "socketNotificationReceived", "Invalid configuration", JSON.stringify(this.config, null, 2))
+        this.sendSocketNotification(this.name + 'FIXTURES', []);
+      } else {
 
-      Log.info(this.name, "socketNotificationReceived | fetchOptions", JSON.stringify(this.fetchOptions));
-      this.fetchAllWithInterval()
+        this.fetchOptions = {
+          method: 'GET',
+          headers: {
+            'X-Auth-Token': this.config.token
+          }
+        }
+
+        Log.info(this.name, "socketNotificationReceived | fetchOptions", JSON.stringify(this.fetchOptions));
+        this.fetchAllWithInterval()
+      }
       this.fetchVersion();
     }
   },

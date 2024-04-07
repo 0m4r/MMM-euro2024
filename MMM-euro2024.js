@@ -10,6 +10,12 @@ Module.register('MMM-euro2024', {
   loaded: false,
   nextUpdate: [],
 
+  defaults: {
+    updateInterval: 60 * 60 * 1000,
+    competitionId: "2018",
+    token: "",
+  },
+
   start: function () {
     Log.info('Starting module ' + this.name);
     Log.info('with config: ' + JSON.stringify(this.config));
