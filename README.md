@@ -1,6 +1,6 @@
 # MMM-euro2024
 
-a Magic Mirror Module to display Euro 2020 fixtures and standings
+a Magic Mirror Module to display Euro 2024 fixtures and standings
 
 ## PREREQUISITES
 
