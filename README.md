@@ -5,7 +5,7 @@ a Magic Mirror Module to display Euro 2020 fixtures and standings
 ## PREREQUISITES
 
 create an account https://www.football-data.org/ and obtain your token.  
-Add the token to the module's configuration.
+Add the token to the module's [configuration](#configuration) (replace it with `[YOUR_TOKEN]`)
 
 ## INSTALLATION
 
@@ -19,13 +19,14 @@ the default configuration looks like this:
 ```js
 {
   disabled: false,
-  module: "MMM-euro2024",
-  position: "bottom_center",
-  defaults: {
-    updateInterval: 60 * 1000, // one minute
-  },
-  token: [YOUR_TOKEN]
-}
+  module: 'MMM-euro2024',
+  position: 'center',
+  header: 'Euro 2024',
+  config: {
+    updateInterval: 60 * 1000,
+    token: [YOUR_TOKEN]
+  }
+},
 ```
 
 **BE AWARE OF THE REQUEST LIMIT FOR THE FREE TIER OF THE API**
