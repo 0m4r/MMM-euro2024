@@ -13,10 +13,6 @@ const MAX_TIMEOUT_INTERVAL = 2147483647
 
 module.exports = NodeHelper.create({
   interval: null,
-  defaults: {
-    competitionId: 2018, // Euro 2024
-    updateInterval: 60 * 1000, // 1 minute
-  },
   baseURL: 'https://api.football-data.org/v4/',
   config: {},
   teams: null,
@@ -219,7 +215,6 @@ module.exports = NodeHelper.create({
     Log.info(this.name, "socketNotificationReceived", notification, JSON.stringify(payload));
     if (notification === this.name + 'CONFIG') {
       this.config = {
-        ...this.defaults,
         ...payload,
       };
 
