@@ -8,7 +8,7 @@
 }
 
 .MMM-euro2024-FINISHED {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .MMM-euro2024-FINISHED .MMM-euro2024-score {
@@ -40,11 +40,17 @@
 }
 
 .MMM-euro2024-date,
-.MMM-euro2024-time-group {
+.MMM-euro2024-time-group,
+.MMM-euro2024-referee {
   font-size: smaller;
   background-color: #6666663a;
   text-align: center;
   font-size: smaller;
+}
+
+.MMM-euro2024-referee {
+  background: transparent;
+  color: var(--color-text);
 }
 
 .MMM-euro2024-header {

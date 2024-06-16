@@ -89,14 +89,21 @@ Module.register('MMM-euro2024', {
         const tr = document.createElement('tr');
         tr.appendChild(buildTD(m.homeTeam.name, 'MMM-euro2024-homeTeam'));
         tr.appendChild(buildTDForFlag(m.homeTeam.flag, 'MMM-euro2024-flag'));
-        tr.appendChild(buildTD(m.score.fullTime.homeTeam, 'MMM-euro2024-score'));
+        tr.appendChild(buildTD(m.score.fullTime.home, 'MMM-euro2024-score'));
         tr.appendChild(buildTD('-'));
-        tr.appendChild(buildTD(m.score.fullTime.awayTeam, 'MMM-euro2024-score'));
+        tr.appendChild(buildTD(m.score.fullTime.away, 'MMM-euro2024-score'));
         tr.appendChild(buildTDForFlag(m.awayTeam.flag, 'MMM-euro2024-flag'));
         tr.appendChild(buildTD(m.awayTeam.name, 'MMM-euro2024-awayTeam'));
+        tr.classList.add('MMM-euro2024-' + m.status)
         table.appendChild(tr)
 
-        tr.classList.add('MMM-euro2024-' + m.status)
+        m.referees.forEach(r => {
+          const trReferee = document.createElement("tr");
+          trReferee.appendChild(buildTD(`${r.type.toLowerCase()}: ${r?.name} (${r?.nationality})`, `MMM-euro2024-referee`, 7))
+          table.appendChild(trReferee)
+        })
+
+
       });
     });
 
